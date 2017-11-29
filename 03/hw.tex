@@ -1,0 +1,155 @@
+
+\documentclass[13pt,a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{array}
+
+% Некоторые множества
+
+\def\Q{\mathbb{Q}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+
+% Бинарные операции над множествами
+
+% xor
+\def\xor{\oplus}
+% объединение
+\def\u{\cup}
+% объединение
+\def\i{\cap}
+
+
+% Комбинаторика
+
+% Биномиальный коэффициент : (из n  по k)
+\def\set{\binom}
+% ((из n по k))
+\def\mset#1#2{\ensuremath{\left(\kern-.3em\left(\genfrac{}{}{0pt}{}{#1}{#2}\right)\kern-.3em\right)}}
+
+
+% Опеации над несколькими множествами
+
+% Сумма
+\def\suml{\sum\limits}
+
+% Сумма
+\def\intl{\int\limits}
+
+% Перемножение (знак П)
+\def\prodl{\mul\limits}
+
+% Объединение
+\def\U{\bigcup}
+\def\Ul#1#2#3{\U\limits_{{#1}={#2}}^{#3}}
+\def\Ui#1#2{\Ul{#1}{#2}{\inf}}
+\def\Uin#1#2{\U\limits_{{#1} \in {#2}}}
+
+% Пересечение
+\def\I{\bigcap}
+\def\Il#1#2#3{\I\limits_{{#1}={#2}}^{#3}}
+\def\Ii#1#2{\Il{#1}{#2}{\inf}}
+\def\Iin#1#2{\I\limits_{{#1} \in {#2}}}
+
+
+% Разделители
+
+\def\ms{\medskip}
+\def\bs{\bigskip}
+
+
+% Греческий алфавит
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\l{\lambda}
+\def\e{\varepsilon}
+\def\eps{\varepsilon}
+\def\d{\delta}
+\def\m{\mu}
+\def\p{\phi}
+
+\def\L{\Lambda}
+\def\D{\Delta}
+\def\M{\Mu}
+\def\P{\Phi}
+
+
+% Кванторы
+
+\def\A{\forall}
+\def\E{\exists\;}
+
+
+% Что-то еще
+
+\def\inf{\t{+}\infty}    % +inf
+\def\O{\mathcal{O}}      %
+\def\t{\text}
+\def\bs{\textbackslash{}}
+
+
+\begin{document}
+
+\def\th{\theta}
+\def\prodl{\prod\limits}
+\def\dd#1#2{\frac{\partial{#1}}{\partial{#2}}}
+\def\maxl{\max\limits}
+
+\section*{\text{ Достаточные }\allowbreak \text{статистики }\allowbreak (29.09\text{ -- }06.10)}
+
+\subsection*{\text{ Задача}\allowbreak }
+
+\def\Xn{X_{(n)}}
+
+\(\text{Пусть }\allowbreak X_1,..., X_n\text{ -- }\text{выборка }\allowbreak \text{из }\allowbreak \text{равномерного }\allowbreak \text{распределения }\allowbreak \text{на }\allowbreak \text{конечном }\allowbreak \text{множестве }\allowbreak \{ 1,..., \th \},\)
+\(\text{где }\allowbreak \th\text{ -- }\text{натуральный }\allowbreak \text{параметр. }\allowbreak \text{Докажите, }\allowbreak \text{что }\allowbreak \text{статистика}\allowbreak \)
+
+\(\frac{\Xn^{n + 1} - (\Xn - 1)^{n + 1} }{\Xn^n - (\Xn - 1)^n}\)
+\medskip
+
+\(\text{является }\allowbreak \text{эффективной }\allowbreak \text{оценкой }\allowbreak \text{параметра }\allowbreak \th\text{ в }\allowbreak \text{классе }\allowbreak \text{несмещенных }\allowbreak \text{оценок.}\allowbreak \)
+
+\subsection*{\text{ Решение}\allowbreak }
+
+\subsubsection*{\text{ Несмещенность}\allowbreak }
+
+\(\text{Сначала }\allowbreak \text{докажем, }\allowbreak \text{что }\allowbreak \text{данная }\allowbreak \text{оценка }\allowbreak \text{является }\allowbreak \text{несмещенной.}\allowbreak \)
+
+\(P[\Xn = k]\)
+\(= P[\Xn \le  k] - P[\Xn \le  k - 1]\)
+\(= (\frac{k }{\th})^n - (\frac{k - 1 }{\th})^n\)
+
+\(E \frac{\Xn^{n + 1} - (\Xn - 1)^{n + 1} }{\Xn^n - (\Xn - 1)^n}\)
+\(= \suml_{k = 1}^{\th} \frac{k^{n + 1} - (k - 1)^{n + 1} }{k^n - (k - 1)^n}\cdot  P[\Xn = k]\)
+\(= \suml_{k = 1}^{\th} \frac{k^{n + 1} - (k - 1)^{n + 1} }{\th^n}\)
+\(= \frac{1 }{\th^n}\cdot  (\suml_{k = 1}^{\th} k^{n + 1} - \suml_{k = 0}^{\th-1} k^{n + 1})\)
+\(= \th\)
+
+\medskip
+\(\text{Осталось }\allowbreak \text{доказать, }\allowbreak \text{что }\allowbreak \Xn\text{ -- }\text{полная }\allowbreak \text{достаточная }\allowbreak \text{статистика.}\allowbreak \)
+\(\text{Тогда }\allowbreak \text{данная }\allowbreak \text{оценка }\allowbreak \text{будет }\allowbreak \text{эффективной }\allowbreak \text{в }\allowbreak \text{своём }\allowbreak \text{классе }\allowbreak \text{как }\allowbreak \text{функция }\allowbreak \text{от }\allowbreak \text{полной }\allowbreak \text{достаточной }\allowbreak \text{статистики.}\allowbreak \)
+
+\subsubsection*{\text{ Достаточность}\allowbreak }
+
+\(P[X_1, ..., X_n \in B | \Xn = k] = (\frac{1 }{k})^n\text{ не }\allowbreak \text{зависит }\allowbreak \text{от }\allowbreak \th\)
+
+\subsubsection*{\text{ Полнота}\allowbreak }
+
+\(E g(\Xn) = \suml_{k = 1}^{\th} P[\Xn = k]\cdot  g(k)\)
+
+\(\A k \in \{1, ..., \th\}: P[\Xn = k] \ge  (\frac{1 }{\th})^n > 0\)
+
+\(\text{Таким }\allowbreak \text{образом }\allowbreak \text{если }\allowbreak E g(\Xn) = 0,\text{ то }\allowbreak \A k \in \{1, ..., \th\}: g(k) = 0.\)
+\(\text{Тогда }\allowbreak g(\Xn) = 0.\)
+
+\let\Xn\undefined
+\end{document}
