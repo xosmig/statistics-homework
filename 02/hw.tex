@@ -1,0 +1,171 @@
+
+\documentclass[13pt,a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{array}
+
+% Некоторые множества
+
+\def\Q{\mathbb{Q}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+
+% Бинарные операции над множествами
+
+% xor
+\def\xor{\oplus}
+% объединение
+\def\u{\cup}
+% объединение
+\def\i{\cap}
+
+
+% Комбинаторика
+
+% Биномиальный коэффициент : (из n  по k)
+\def\set{\binom}
+% ((из n по k))
+\def\mset#1#2{\ensuremath{\left(\kern-.3em\left(\genfrac{}{}{0pt}{}{#1}{#2}\right)\kern-.3em\right)}}
+
+
+% Опеации над несколькими множествами
+
+% Сумма
+\def\suml{\sum\limits}
+
+% Сумма
+\def\intl{\int\limits}
+
+% Перемножение (знак П)
+\def\prodl{\mul\limits}
+
+% Объединение
+\def\U{\bigcup}
+\def\Ul#1#2#3{\U\limits_{{#1}={#2}}^{#3}}
+\def\Ui#1#2{\Ul{#1}{#2}{\inf}}
+\def\Uin#1#2{\U\limits_{{#1} \in {#2}}}
+
+% Пересечение
+\def\I{\bigcap}
+\def\Il#1#2#3{\I\limits_{{#1}={#2}}^{#3}}
+\def\Ii#1#2{\Il{#1}{#2}{\inf}}
+\def\Iin#1#2{\I\limits_{{#1} \in {#2}}}
+
+
+% Разделители
+
+\def\ms{\medskip}
+\def\bs{\bigskip}
+
+
+% Греческий алфавит
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\l{\lambda}
+\def\e{\varepsilon}
+\def\eps{\varepsilon}
+\def\d{\delta}
+\def\m{\mu}
+\def\p{\phi}
+
+\def\L{\Lambda}
+\def\D{\Delta}
+\def\M{\Mu}
+\def\P{\Phi}
+
+
+% Кванторы
+
+\def\A{\forall}
+\def\E{\exists\;}
+
+
+% Что-то еще
+
+\def\inf{\t{+}\infty}    % +inf
+\def\O{\mathcal{O}}      %
+\def\t{\text}
+\def\bs{\textbackslash{}}
+
+
+\begin{document}
+
+
+\def\th{\theta}
+\def\prodl{\prod\limits}
+\def\dd#1#2{\frac{\partial{#1}}{\partial{#2}}}
+\def\maxl{\max\limits}
+
+\(\text{Оценки }\allowbreak \text{максимального }\allowbreak \text{правдоподобия }\allowbreak (22.09\text{ -- }29.09)\)
+
+\section*{ 1}
+
+\(\text{Найдите }\allowbreak \text{оценку }\allowbreak \text{максимального }\allowbreak \text{правдоподобия }\allowbreak \text{параметра }\allowbreak \th > 0,\text{ если }\allowbreak \text{распределение }\allowbreak \text{выборки }\allowbreak \text{имеет }\allowbreak \text{плотность.}\allowbreak \)
+
+\subsection*{ (a)}
+
+\(\text{Плотность: }\allowbreak \th y^{\th - 1}\text{ при }\allowbreak y \in [0; 1]\)
+
+\(\ln L\)
+\(= \ln(\prodl_{i = 1}^{n} \th X_i^{\th - 1})\)
+\(= n \ln \th + (\th - 1) \suml_{i = 1}^{n} \ln X_i\)
+
+\(\dd{ln L}{\th}\)
+\(= \frac{n }{\th} + \suml_{i = 1}^{n} \ln X_i\)
+\(= 0\)
+
+\(\th = \frac{-n }{\suml_{i = 1}^{n} \ln X_i}\)
+
+\subsection*{ (b)}
+
+\(\text{Плотность: }\allowbreak \frac{2y }{\th^2}\text{ при }\allowbreak y \in [0; \th]\)
+
+\(L = \prodl_{i = 1}^{n} \frac{2 X_i }{\th^2},\text{ если }\allowbreak \A i: X_i \le  \th\)
+
+\(L = 0,\text{ если }\allowbreak \E i: X_i > \th\)
+
+\(L\text{ убывает }\allowbreak \text{при }\allowbreak \text{росте }\allowbreak \th \Rightarrow  L\text{ будет }\allowbreak \text{максимально }\allowbreak \text{при }\allowbreak \text{минимально }\allowbreak \text{возможном }\allowbreak \th.\)
+
+\(\hat\th = \maxl_{i = 1}^{n} X_i\)
+
+\subsection*{ (c)}
+
+\(\text{Плотность: }\allowbreak \frac{e^{-|y|} }{2 - 2e^{-\th}}\)
+
+\(L = \frac{1 }{2 - 2e^{-\th}}\cdot  \prodl_{i = 1}^{n} e^{-|X_i|},\text{ если }\allowbreak \A i: |X_i| \le  \th\)
+
+\(L = 0,\text{ если }\allowbreak \E i: |X_i| > \th\)
+
+\(L\text{ убывает }\allowbreak \text{при }\allowbreak \text{росте }\allowbreak \th \Rightarrow  L\text{ будет }\allowbreak \text{максимально }\allowbreak \text{при }\allowbreak \text{минимально }\allowbreak \text{возможном }\allowbreak \th.\)
+
+\(\hat\th = \maxl_{i = 1}^{n} |X_i|\)
+
+\section*{ 2}
+
+\(\text{Дана }\allowbreak \text{выборка }\allowbreak \text{из }\allowbreak \text{нормального }\allowbreak \text{распределения }\allowbreak \text{со }\allowbreak \text{средним }\allowbreak \th\text{ и }\allowbreak \text{единичной }\allowbreak \text{дисперсией,}\allowbreak \)
+\(\text{где }\allowbreak \th\text{ может }\allowbreak \text{принимать }\allowbreak \text{лишь }\allowbreak \text{два }\allowbreak \text{значения: }\allowbreak 1\text{ и }\allowbreak 2.\)
+\(\text{Найдите }\allowbreak \text{оценку }\allowbreak \text{максимального }\allowbreak \text{правдоподобия }\allowbreak \text{параметра }\allowbreak \th.\)
+\medskip
+
+\(L_{\th} = \frac{1 }{\sqrt{2\pi}} \prodl_{i = 1}^{n} e^{\frac{-(X_i - \th)^2 }{2}}\)
+
+\(\ln L_{\th} = \ln \frac{1 }{\sqrt{2\pi}} + \suml_{i = 1}^{n} \frac{-(X_i - \th)^2 }{2}\)
+
+\(\ln L_2 - \ln L_1\)
+\(= \frac{1 }{2} \suml_{i = 1}^{n} ((x - 1)^2 - (x - 2)^2)\)
+\(= \suml_{i = 1}^{n} (x - 1.5)\)
+
+\(\hat\th = 2,\text{ при }\allowbreak \overline X \ge  1.5\)
+
+\(\hat\th = 1,\text{ иначе}\allowbreak \)
+
+\end{document}
