@@ -29,8 +29,7 @@ plot.task.b <- function() {
   p.values <- sapply(samples, function(sample) {
     ks.test(sample, function(...) pnorm(..., mean=mean(sample), sd=sd(sample)))$p.value
   })
-  hist(p.values, breaks=40, col="green")
-  rug(p.values)
+  plot(ecdf(p.values), main="ECDF For P Value In KS-Test", ylab="F(x)", xlab="P-Value")
 }
 
 show.plots <- function() {

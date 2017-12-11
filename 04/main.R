@@ -1,28 +1,50 @@
 
-task.a <- function() {
-  ns <- seq(from=100, by=10, length.out=100)
+n.width.plot <- function(sd, col) {
+  ns <- seq(from=100, to=1500, length.out=100)
   widths <- sapply(ns, function(n) {
-    int <- t.test(rnorm(n))$conf.int
+    int <- t.test(rnorm(n, sd=sd))$conf.int
     width <- int[2] - int[1]
   })
-  plot(x=ns, y=widths,
-       main="Normal Distribution, Variance = 1",
-       xlab="Sample Size", ylab="Confidence Interval Width")
+  lines(ns, widths, col=col)
 }
 
-task.b <- function() {
-  n <- 1000
+task.a <- function() {
+  sds <- c(2, 1, 0.5, 0.3)
+  cols <- c("green", "black", "blue", "purple")
+  
+  plot(x=NULL, y=NULL,
+       xlab="Sample Size", ylab="Confidence Interval Width",
+       type="l",
+       xlim=c(100, 1500),
+       ylim=c(0, 0.8))
+  for (i in seq_along(sds)) {
+    n.width.plot(sds[i], cols[i])
+  }
+  legend("topright", legend=sds, col=cols, lty=1, title="Standard Deviation")
+}
+
+sd.width.plot <- function(n, col) {
   sds <- seq(from=3, to=0.1, length.out=100)
   widths <- sapply(sds, function(sd) {
     int <- t.test(rnorm(n, sd=sd))$conf.int
     width <- int[2] - int[1]
   })
-  print(sds)
-  print(widths)
-  plot(x=sds, y=widths,
-       main=sprintf("Normal Distribution, Sample Size = %d", n),
+  lines(sds, widths, col=col)
+}
+
+task.b <- function() {
+  ns <- c(300, 500, 1000, 2000)
+  cols <- c("green", "black", "blue", "purple")
+  
+  plot(x=NULL, y=NULL,
        xlab="Standard Deviation", ylab="Confidence Interval Width",
-       xlim=rev(range(x)))
+       type="l",
+       xlim=c(0, 3),
+       ylim=c(0, 0.8))
+  for (i in seq_along(ns)) {
+    sd.width.plot(ns[i], cols[i])
+  }
+  legend("topleft", legend=ns, col=cols, lty=1, title="Sample Size")
 }
 
 show.plots <- function() {
