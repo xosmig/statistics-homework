@@ -1,7 +1,7 @@
 N = 100
 UNIF.MAX = 2
 
-print.test.result <- function(p.value, test.name, signif=0.95) {
+print.test.result <- function(p.value, test.name, signif=0.05) {
   status <- if (p.value <= signif) "rejected" else "not rejected"
   res <- sprintf("The hypothesis is %s by %s test with p.value=%f",
                  status, test.name, p.value)
@@ -10,7 +10,7 @@ print.test.result <- function(p.value, test.name, signif=0.95) {
 
 unif.chisq.test <- function(sample) {
   NUM.OF.INTERVALS = 10
-  
+
   int.sep <- seq(from=0, to=UNIF.MAX, length.out=NUM.OF.INTERVALS + 1)
   cnt <- sapply(1:NUM.OF.INTERVALS, function(i) {
     length(which(sample >= int.sep[i] & sample < int.sep[i + 1]))

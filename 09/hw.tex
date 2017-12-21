@@ -1,0 +1,130 @@
+
+\documentclass[13pt,a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{array}
+
+% Некоторые множества
+
+\def\Q{\mathbb{Q}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+
+% Бинарные операции над множествами
+
+% xor
+\def\xor{\oplus}
+% объединение
+\def\u{\cup}
+% объединение
+\def\i{\cap}
+
+
+% Комбинаторика
+
+% Биномиальный коэффициент : (из n  по k)
+\def\set{\binom}
+% ((из n по k))
+\def\mset#1#2{\ensuremath{\left(\kern-.3em\left(\genfrac{}{}{0pt}{}{#1}{#2}\right)\kern-.3em\right)}}
+
+
+% Опеации над несколькими множествами
+
+% Сумма
+\def\suml{\sum\limits}
+
+% Сумма
+\def\intl{\int\limits}
+
+% Перемножение (знак П)
+\def\prodl{\mul\limits}
+
+% Объединение
+\def\U{\bigcup}
+\def\Ul#1#2#3{\U\limits_{{#1}={#2}}^{#3}}
+\def\Ui#1#2{\Ul{#1}{#2}{\inf}}
+\def\Uin#1#2{\U\limits_{{#1} \in {#2}}}
+
+% Пересечение
+\def\I{\bigcap}
+\def\Il#1#2#3{\I\limits_{{#1}={#2}}^{#3}}
+\def\Ii#1#2{\Il{#1}{#2}{\inf}}
+\def\Iin#1#2{\I\limits_{{#1} \in {#2}}}
+
+
+% Разделители
+
+\def\ms{\medskip}
+\def\bs{\bigskip}
+
+
+% Греческий алфавит
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\l{\lambda}
+\def\e{\varepsilon}
+\def\eps{\varepsilon}
+\def\d{\delta}
+\def\m{\mu}
+\def\p{\phi}
+
+\def\L{\Lambda}
+\def\D{\Delta}
+\def\M{\Mu}
+\def\P{\Phi}
+
+
+% Кванторы
+
+\def\A{\forall}
+\def\E{\exists\;}
+
+
+% Что-то еще
+
+\def\inf{\t{+}\infty}    % +inf
+\def\O{\mathcal{O}}      %
+\def\t{\text}
+\def\bs{\textbackslash{}}
+
+
+\begin{document}
+
+\def\x{\xi}
+\def\e{\eta}
+\def\z{\zeta}
+
+\section*{ 1}
+
+\(f_{\x_1 | \x_2}(x | y) = \frac{f_{\x_1, \x_2}(x, y) }{f_{\x_2}(y)}\)
+\( \text{ не }\allowbreak \text{зависит }\allowbreak \text{от }\allowbreak x\text{ при }\allowbreak (x,y)\text{ внутри }\allowbreak \text{круга, }\allowbreak \\\)
+\(\text{т.}\allowbreak \text{к. }\allowbreak f_{\x_1, \x_2}(x, y) = const\text{ внутри }\allowbreak \text{круга}\allowbreak \)
+
+\(\text{Таким }\allowbreak \text{образом, }\allowbreak \text{при }\allowbreak \x_2 = y; \x_1\text{ равномерно }\allowbreak \text{распределено }\allowbreak \text{по }\allowbreak \text{соответствующей }\allowbreak \text{хорде.}\allowbreak \)
+
+\(\text{Плотность }\allowbreak \x_1\text{ при }\allowbreak \x_2 = y:\)
+\(\begin{cases}\)
+\(  \frac{1 }{2 \sqrt{1 - y^2}},\text{ при }\allowbreak x \in [-\sqrt{1 - y^2}; \sqrt{1 - y^2}] \\\)
+\(  0,\text{ иначе}\allowbreak \)
+\(\end{cases}\)
+
+\(\text{Матожидание }\allowbreak \x_1\text{ при }\allowbreak \x_2 = y: 0\)
+
+\section*{ 2}
+
+\(\z = \sqrt{\x_1^2 + \x_2^2}\)
+
+\(f_{\z}(r)\)
+\(= \intl_{\R^2} f_{\z | \x_1, \x_2}(r | x, y) f_{\x_1, \x_2}(x, y) d(x,y)\)
+\(= \intl_{\R^2} I\{\sqrt{\x_1^2 + \x_2^2} = r\} f_{\x_1, \x_2}(x, y) d(x,y)\)
+
+\end{document}

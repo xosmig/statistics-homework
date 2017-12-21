@@ -1,0 +1,195 @@
+
+\documentclass[13pt,a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{array}
+
+% Некоторые множества
+
+\def\Q{\mathbb{Q}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+
+% Бинарные операции над множествами
+
+% xor
+\def\xor{\oplus}
+% объединение
+\def\u{\cup}
+% объединение
+\def\i{\cap}
+
+
+% Комбинаторика
+
+% Биномиальный коэффициент : (из n  по k)
+\def\set{\binom}
+% ((из n по k))
+\def\mset#1#2{\ensuremath{\left(\kern-.3em\left(\genfrac{}{}{0pt}{}{#1}{#2}\right)\kern-.3em\right)}}
+
+
+% Опеации над несколькими множествами
+
+% Сумма
+\def\suml{\sum\limits}
+
+% Сумма
+\def\intl{\int\limits}
+
+% Перемножение (знак П)
+\def\prodl{\prod\limits}
+
+% Объединение
+\def\U{\bigcup}
+\def\Ul#1#2#3{\U\limits_{{#1}={#2}}^{#3}}
+\def\Ui#1#2{\Ul{#1}{#2}{\inf}}
+\def\Uin#1#2{\U\limits_{{#1} \in {#2}}}
+
+% Пересечение
+\def\I{\bigcap}
+\def\Il#1#2#3{\I\limits_{{#1}={#2}}^{#3}}
+\def\Ii#1#2{\Il{#1}{#2}{\inf}}
+\def\Iin#1#2{\I\limits_{{#1} \in {#2}}}
+
+
+% Разделители
+
+\def\ms{\medskip}
+\def\bs{\bigskip}
+
+
+% Греческий алфавит
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\l{\lambda}
+\def\e{\varepsilon}
+\def\eps{\varepsilon}
+\def\d{\delta}
+\def\m{\mu}
+\def\p{\phi}
+
+\def\L{\Lambda}
+\def\D{\Delta}
+\def\M{\Mu}
+\def\P{\Phi}
+
+
+% Кванторы
+
+\def\A{\forall}
+\def\E{\exists\;}
+
+
+% Что-то еще
+
+\def\inf{\t{+}\infty}    % +inf
+\def\O{\mathcal{O}}      %
+\def\t{\text}
+\def\bs{\textbackslash{}}
+
+
+\begin{document}
+
+\def\sqn{\sqrt{n}}
+\def\X{\overline{X}}
+
+\section*{\text{ Домашнее }\allowbreak \text{задание }\allowbreak \text{по }\allowbreak \text{статистике }\allowbreak 06.10.17}
+
+\subsection*{ 1.}
+
+\subsubsection*{ (a)}
+
+\medskip
+\(\dfrac{\sqn (\hat p - p) }{\sigma(\hat p) } \xrightarrow[\hspace{12pt}]{d}  N(0, 1)\)
+
+\def\si{\sqrt{\X (1 - \X)}}
+
+\medskip
+\(\dfrac{\sqn (\X - p) }{\si } \xrightarrow[\hspace{12pt}]{d}  N(0, 1)\)
+
+\medskip
+\(\text{При }\allowbreak \alpha = 0.05: z_l \approx  -1.96 = -z, z_r \approx  1.96 = z\)
+
+\medskip
+\(P[ -z \le  \dfrac{\sqn (\X - p) }{\si } \le  z ] \approx  1 - \a\)
+
+\medskip
+\(P[ \X - z \dfrac{\si }{\sqn } \le  p \le  \X + z \dfrac{\si }{\sqn } ] \approx  1 - \a\)
+
+\medskip
+\(\text{При }\allowbreak 7\text{ успехах }\allowbreak \text{и }\allowbreak 11\text{ неудачах: }\allowbreak \\\)
+\(\X = \frac{7}{18} \approx  0.39 \\\)
+\(\sigma(\hat p) = \sqrt{\frac{7}{18}\cdot  \frac{11 }{18}} \approx  0.49 \\\)
+
+\(\text{Ассимптотический }\allowbreak \text{доверительный }\allowbreak \text{интервал }\allowbreak \text{уровня }\allowbreak \alpha = 0.05: \\\)
+\((0.39 - \dfrac{1.96\cdot  0.49 }{4.24 }; 0.39 + \dfrac{1.96\cdot  0.49 }{4.24 } )\)
+\(\approx  (0.16; 0.61)\)
+
+\subsubsection*{ (b)}
+
+\subsection*{ 2.}
+
+\def\Xm{X_{max}}
+\def\t{\theta}
+
+\subsubsection*{ (a)}
+
+\(P[Z < z] = P[\Xm / \t < z] = P[\A i: X_i / \t < z] = \prodl_{i = 1}^{n} P[X_i / \t < z] = z^n\)
+
+\subsubsection*{ (b)}
+
+\(P[Z \le  q] = P[\Xm / \t \le  q] = P[\t q \ge  \Xm] = P[\t \ge  \Xm / q] = 1 - \alpha, \\\)
+\(\text{если }\allowbreak q\text{ -- }\text{квантиль }\allowbreak \text{распределения }\allowbreak Z\text{ уровня }\allowbreak 1 - \alpha\)
+
+\(q = (1 - \alpha)^{1 / n}\)
+
+\(L_{low} = \Xm\cdot  (1 - \alpha)^{-1 / n}\)
+
+
+\subsection*{ 3.}
+
+\(S^2 = \frac{1 }{n} \suml_{i = 1}^{n} (X_i - \X)^2\)
+
+\medskip
+\(\dfrac{nS^2 }{\sigma^2} \sim  \chi^2(n - 1)\)
+
+\medskip
+\(P[ z_l \le  \dfrac{nS^2 }{\sigma^2 } \le  z_r ] = 0.95\)
+
+\medskip
+\(P[ \dfrac{1 }{z_r } \le  \dfrac{\sigma^2 }{nS^2 } \le  \dfrac{1 }{z_l } ] = 0.95\)
+
+\medskip
+\(P[ \dfrac{nS^2 }{z_r } \le  \sigma^2 \le  \dfrac{nS^2 }{z_l } ] = 0.95\)
+
+\medskip
+\(n = 10\)
+
+\(\X = 0.483\)
+
+\(S^2 = 0.0007783333\)
+
+\(z_l = z_{0.025} = 2.700389\)
+
+\(z_r = z_{0.975} = 19.02277\)
+
+\medskip
+\(\text{Точный }\allowbreak \text{доверительный }\allowbreak \text{интервал }\allowbreak \text{уровня }\allowbreak \alpha = 0.05:\)
+
+\medskip
+\(( \dfrac{10\cdot  0.0007783333 }{19.02277 }; \dfrac{10\cdot  0.0007783333 }{2.700389 } )\)
+
+\medskip
+\((0.0004; 0.0028) \\\)
+
+
+\end{document}
