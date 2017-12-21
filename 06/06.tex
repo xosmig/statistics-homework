@@ -1,0 +1,158 @@
+
+\documentclass[13pt,a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{array}
+
+% Некоторые множества
+
+\def\Q{\mathbb{Q}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+
+% Бинарные операции над множествами
+
+% xor
+\def\xor{\oplus}
+% объединение
+\def\u{\cup}
+% объединение
+\def\i{\cap}
+
+
+% Комбинаторика
+
+% Биномиальный коэффициент : (из n  по k)
+\def\set{\binom}
+% ((из n по k))
+\def\mset#1#2{\ensuremath{\left(\kern-.3em\left(\genfrac{}{}{0pt}{}{#1}{#2}\right)\kern-.3em\right)}}
+
+
+% Опеации над несколькими множествами
+
+% Сумма
+\def\suml{\sum\limits}
+
+% Сумма
+\def\intl{\int\limits}
+
+% Перемножение (знак П)
+\def\prodl{\prod\limits}
+
+% Объединение
+\def\U{\bigcup}
+\def\Ul#1#2#3{\U\limits_{{#1}={#2}}^{#3}}
+\def\Ui#1#2{\Ul{#1}{#2}{\inf}}
+\def\Uin#1#2{\U\limits_{{#1} \in {#2}}}
+
+% Пересечение
+\def\I{\bigcap}
+\def\Il#1#2#3{\I\limits_{{#1}={#2}}^{#3}}
+\def\Ii#1#2{\Il{#1}{#2}{\inf}}
+\def\Iin#1#2{\I\limits_{{#1} \in {#2}}}
+
+
+% Разделители
+
+\def\ms{\medskip}
+\def\bs{\bigskip}
+
+
+% Греческий алфавит
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\l{\lambda}
+\def\e{\varepsilon}
+\def\eps{\varepsilon}
+\def\d{\delta}
+\def\m{\mu}
+\def\p{\phi}
+
+\def\L{\Lambda}
+\def\D{\Delta}
+\def\M{\Mu}
+\def\P{\Phi}
+
+
+% Кванторы
+
+\def\A{\forall}
+\def\E{\exists\;}
+
+
+% Что-то еще
+
+\def\inf{\t{+}\infty}    % +inf
+\def\O{\mathcal{O}}      %
+\def\t{\text}
+\def\bs{\textbackslash{}}
+
+
+\begin{document}
+
+\def\s{\sigma}
+\def\a{\alpha}
+\def\X{\overline{X}}
+\def\Y{\overline{Y}}
+\def\E{\mathbb{E}}
+
+\section*{\text{ Домашнее }\allowbreak \text{задание }\allowbreak \text{по }\allowbreak \text{статистике }\allowbreak 27.10.17}
+
+\subsection*{ 1.}
+
+\(n_1 = 25, \X_1 = 3.6, \s_1 = 0.36\)
+
+\(n_2 = 27, \X_2 = 3.8, \s_2 = 0.32\)
+
+\(H_0: \E X_2 > \E X_1\)
+
+\(\text{Статистика }\allowbreak T = (\X_1 - \X_2)\cdot  (\frac{\s_1^2 }{n_1} + \frac{\s_2^2 }{n_2})^{-1/2}\)
+
+\(\text{Критическая }\allowbreak \text{область }\allowbreak \text{для }\allowbreak \a = 0.05: T > z_{1 - \a} = 1.644854\)
+
+\(\hat T = -0.2\cdot  (...) < 0 < 1.644854 \Rightarrow \text{ Гипотеза }\allowbreak \text{не }\allowbreak \text{отвергается}\allowbreak \)
+
+\subsection*{ 2.}
+
+\(n_1 = 40, \X_1 = 9.1, \s_1 = 1.9\)
+
+\(n_2 = 50, \X_2 = 8.0, \s_2 = 2.1\)
+
+\(H_0: \E X_2 = \E X_1\)
+
+\(\text{Статистика }\allowbreak T = (\X_1 - \X_2)\cdot  (\frac{\s_1^2 }{n_1} + \frac{\s_2^2 }{n_2})^{-1/2}\)
+
+\(T \sim  N(0, 1)\text{ в }\allowbreak \text{предположении }\allowbreak \text{истинности }\allowbreak \text{нулевой }\allowbreak \text{гипотезы}\allowbreak \)
+
+\(\text{Критическая }\allowbreak \text{область }\allowbreak \text{для }\allowbreak \a = 0.05: |T| > error = z_{1 - \frac{\a }{2}} = 1.959964\)
+
+\(\hat T = (9.1 - 8.0)\cdot  (\frac{3.61 }{40} + \frac{4.41 }{50})^{-1/2} = 2.603961\)
+
+\(|\hat T| > error \Rightarrow \text{ гипотеза }\allowbreak \text{отвергается}\allowbreak \)
+
+\subsection*{ 3.}
+
+\subsubsection*{ (c) $H_0: a = 600, H_1: a < 600$}
+
+\(\X = 650, n = 25, s = 50\)
+
+\(\text{Статистика }\allowbreak T = \frac{\sqrt n\cdot  (600 - \X) }{s }\)
+
+\(T \sim  t(24)\text{ в }\allowbreak \text{предположении }\allowbreak \text{истинности }\allowbreak \text{нулевой }\allowbreak \text{гипотезы}\allowbreak \)
+
+\(\text{Критическая }\allowbreak \text{область: }\allowbreak \text{большие }\allowbreak \text{значения }\allowbreak T\)
+
+\(\hat T = \frac{5\cdot  (-50) }{50 } = -5\)
+
+\(pvalue = 1 - F_{t(24)} \approx  0.99998 > \a = 0.1,\text{ гипотеза }\allowbreak \text{не }\allowbreak \text{отвергается}\allowbreak \)
+
+\end{document}
