@@ -156,4 +156,56 @@
 \(pvalue = 1 - F_{\chi^2(2)}(1.31) = 0.52 > 0.05\)
 \(\Rightarrow \text{ гипотеза }\allowbreak \text{не }\allowbreak \text{отвергается }\allowbreak \text{при }\allowbreak \alpha = 0.05\)
 
+\subsection*{ 3.}
+
+\def\X{\overline{X}}
+\def\Y{\overline{Y}}
+\def\E{\mathbb{E}}
+
+\(\X = 39217, S_X = 12210, n_X = n = 100\)
+
+\(\Y = 43121, S_Y = 17020, n_Y = n = 100\)
+
+\(H_0: \E X = \E Y\)
+
+\(H_1: \E X \neq  \E Y\)
+
+\(T = \dfrac{\X - \Y }{S_{X - Y} } \sim  t(df)\)
+
+\medskip
+\def\num{(S_X^2 / n_X + S_2^2 / n_Y)^2}
+\def\denum{(S_X^2 / n_X)^2 / (n_X - 1) + (S_Y^2 / n_Y)^2 / (n_Y - 1)}
+\(df = \dfrac{\num }{\denum }\)
+
+\(\text{Поскольку }\allowbreak n_X = n_Y = n, df = \dfrac{(S_X^2 + S_Y^2)^2 (n - 1) }{S_X^4 + S_Y^2 }\)
+\(= \dfrac{99\cdot  (12210^2 + 17020^2)^2 }{12210^4 + 17020^4 } = 179.56\)
+\medskip
+
+\(S_{X - Y} = \sqrt{ \dfrac{S_X^2 }{n_X } + \dfrac{S_Y^2 }{n_Y } }\)
+\(= \sqrt{ \dfrac{12210^2 }{100 } + \dfrac{17020^2 }{100 } }\)
+\(= 2094\)
+\medskip
+
+\(T = \dfrac{39217 - 43121 }{2094 } = -1.864\)
+
+\medskip
+\(T\text{ попадает }\allowbreak \text{в }\allowbreak 99\%\text{-процентный }\allowbreak \text{доверительный }\allowbreak \text{интервал }\allowbreak = (-2.6; 2.6)\)
+
+\(\text{Таким }\allowbreak \text{образом, }\allowbreak \text{гипотеза }\allowbreak \text{не }\allowbreak \text{отвергается}\allowbreak \)
+
+\subsection*{ 4\text{ (метод }\allowbreak \text{генерации }\allowbreak \text{нормальных }\allowbreak \text{распределений }\allowbreak \text{с }\allowbreak \text{заданной }\allowbreak \text{корреляцией)}\allowbreak }
+
+\def\tmp{\sqrt{1 - \rho^2}}
+
+\(X \sim  N(0, 1),\)
+\(Z \sim  N(0, 1),\)
+\(Y = \rho X + \tmp Z\)
+
+\(r(X, Y)\)
+\(= \frac{cov(X, Y) }{\sigma X \sigma Y }\)
+\(= cov(X, Y)\)
+\(= cov(X, \rho X) + cov(X, \tmp Z) \\\)
+\(= \rho\cdot  cov(X, X)\)
+\(= \rho\)
+
 \end{document}
