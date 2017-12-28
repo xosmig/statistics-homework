@@ -1,0 +1,26 @@
+
+## Задача
+
+@Mr. John is a central New Jersey real estate salesman. He claims that the
+@median selling price of houses in the area is about \$ 100,000. To check this
+@claim, you randomly select 10 houses that were recently sold in this area and
+@record the following prices (in thousands of dollars).
+
+data = 120, 115, 100, 113, 103, 97, 90, 111, 95, 88
+
+@Using the sign test, determine whether the salesman’s claim is reasonable.
+@(Test at the .05 level of significance.)
+
+## Решение
+
+H_0: median = 100, H_1: median != 100
+
+signs = +, +, 0, +, +, -, -, +, -, -
+
+n = 9
+
+cnt_+ ~~ Bin(9, 0.5) в предположении истинности нулевой гипотезы
+
+95\% доверительный интервал = (q_{Bin(9, 0.5)}(0.025); q_{Bin(9, 0.5)}(0.975)) = (2, 7)
+
+cnt_+ = 5 попадает в доверительный интервал ==> нулевая гипотеза не отвергается
